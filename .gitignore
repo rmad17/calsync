@@ -4,7 +4,7 @@
 *.pyc
 __pycache__/
 local_settings.py
-db.sqlite3
+*.sqlite3
 media
 # Ignore all local_settings #
 *_settings.py
