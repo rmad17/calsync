@@ -5,12 +5,10 @@
 {% load staticfiles %}
 {# Load CSS and JavaScript #}
 
-{# Display a form #}
 <div class="main">
     <button type="submit" class="btn btn-success common">
-        {% bootstrap_icon "ok" %} Submit
+        Submit
     </button>
+    <p><a href="/logout">Logout</a>
 </div>
-<link rel='stylesheet' href="{% static 'css/main.css' %}" type='text/css' />
-<script src="{% static 'js/main.js' %}" type='text/javascript' />
 {% endblock %}
