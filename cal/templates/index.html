@@ -5,10 +5,17 @@
 {% load staticfiles %}
 {# Load CSS and JavaScript #}
 
+    <p><a href="/logout">Logout</a>
 <div class="main">
+    {% for event in events %}
+    <span>
+        <label> {{ event.description }} </label>
+        <label> {{ event.updated }} </label>
+    </span>
+    {% endfor %}
+
     <button type="submit" class="btn btn-success common">
         Submit
     </button>
-    <p><a href="/logout">Logout</a>
 </div>
 {% endblock %}

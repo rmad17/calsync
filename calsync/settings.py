@@ -124,3 +124,20 @@ LOGIN_REDIRECT_URL = '/calendar/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = \
     '950974901647-v7kmnv44bfqfa9nvekclqaotuh0qip06.apps.googleusercontent.com'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'zTc8fd58sL0aE0iMjkxgmBXe'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/calendar',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
+    'access_type': 'offline',  # Enables the refreshing grant
+    'approval_promt': 'auto'  # Enables refresh_token
+}
+
+SOCIAL_AUTH_PIPELINE = (  # Removed user creation and profile update
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+)
