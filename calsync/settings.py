@@ -70,12 +70,9 @@ TEMPLATES = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.open_id.OpenIdAuth',
-    'social.backends.google.GoogleOpenId',
     'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 WSGI_APPLICATION = 'calsync.wsgi.application'
 
@@ -125,5 +122,5 @@ except ImportError as e:
 LOGIN_REDIRECT_URL = '/calendar/'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = \
-    '191595983475-o7k0mscgh3k5leqe58qljkupt4fsuki1.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'zctKF3qJxhxv8eTCvQ51P45Z'
+    '950974901647-v7kmnv44bfqfa9nvekclqaotuh0qip06.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'zTc8fd58sL0aE0iMjkxgmBXe'
