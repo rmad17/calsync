@@ -10,7 +10,7 @@ from .models import Events
 # Create your views here.
 
 
-@login_required(login_url='login')
+@login_required
 def home(request):
     context = {}
     if request.user.social_auth.get(provider='google-oauth2').extra_data.get('access_token'):  # noqa

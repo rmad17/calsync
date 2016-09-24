@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -119,6 +118,7 @@ try:
 except ImportError as e:
     print('Error:', e.msg)
 
+LOGIN_URL = '/calendar/login/'
 LOGIN_REDIRECT_URL = '/calendar/'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = \
@@ -133,11 +133,14 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_AUTH_EXTRA_ARGUMENTS = {
     'access_type': 'offline',  # Enables the refreshing grant
     'approval_promt': 'auto'  # Enables refresh_token
 }
-
-SOCIAL_AUTH_PIPELINE = (  # Removed user creation and profile update
+SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
     'social.pipeline.social_auth.social_uid',
     'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
 )
