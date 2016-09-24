@@ -6,5 +6,6 @@ from django.contrib.auth.models import User
 
 class Events(models.Model):
     user = models.ForeignKey(User)
-    description = models.CharField(max_length=500, unique=True)
+    description = models.CharField(max_length=500, null=True)
     updated = models.DateTimeField(auto_now=False, auto_now_add=False)
+    google_id = models.CharField(max_length=500, unique=True, null=True)
