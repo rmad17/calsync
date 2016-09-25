@@ -5,6 +5,7 @@ from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from apiclient.discovery import build
 from oauth2client.client import AccessTokenCredentials
+from django.db import IntegrityError
 
 from .models import Events
 # Create your views here.
@@ -45,8 +46,12 @@ def connect_helper(user):
 def update_or_create_event(event, user):
     if not event and user:
         return None
-    obj, event_data = Events.objects \
-                        .update_or_create(user=user, description=event.get('description'),  # noqa
+    try:
+        obj, event_data = Events.objects \
+                        .update_or_create(user=user, description=event.get('summary'),  # noqa
                                           updated=datetime.strptime(event.get('updated'), "%Y-%m-%dT%H:%M:%S.%fZ"),  # noqa
                                           google_id=event.get('id'))
+    except IntegrityError as e:
+        print('Error:', e.__cause__)
+        return None
     return event_data
