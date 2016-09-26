@@ -6,16 +6,26 @@
 {# Load CSS and JavaScript #}
 
 <p><a href="">Logout</a>
-<div class="main">
+<div id='events' class="main">
     {% for event in events %}
-    <span>
-        <label> {{ event.summary }} </label>
+        <input id='{{ event.id  }}-input' type='text' value='{{ event.summary }}'> </input>
         <label> {{ event.updated }} </label>
-    </span>
+    <br>
     {% endfor %}
-
-    <button type="submit" class="btn btn-success common">
-        Submit
+    <br>
+    <button id='update-btn' type="submit" class="btn btn-success common">
+        Update
     </button>
 </div>
+<div id='create' class="main">
+    <br>
+    <input id='create-input' type='text'></input>
+    <button id='create-btn' type="submit" class="btn btn-primary common">
+        Create Event
+    </button>
+</div>
+<script type="text/javascript"> window.CSRF_TOKEN = "{{ csrf_token }}"; </script> 
+<script type="text/javascript">
+    var csrf_token = '{{ csrf_token }}';
+</script>
 {% endblock %}

@@ -19,10 +19,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-from .views import home, login, logout
+from .views import home, login, logout, create_event
 
 urlpatterns = [
     url(r'^$', home, name='home'),
+    url(r'^create/$', create_event, name='create'),
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout, name='logout'),
     url(r'^social/', include('social.apps.django_app.urls',
